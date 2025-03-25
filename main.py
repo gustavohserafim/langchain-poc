@@ -13,8 +13,6 @@ modelo = ChatOpenAI(
     model="gpt-4o-mini",
 )
 parser = StrOutputParser()
-chain = modelo | parser
-
 
 template_mensagem = ChatPromptTemplate.from_messages(
     [
