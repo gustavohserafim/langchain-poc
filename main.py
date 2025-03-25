@@ -9,18 +9,18 @@ load_dotenv()
 
 API_TOKEN = os.getenv("OPENAI_API_KEY")
 
-modelo = ChatOpenAI(
+model = ChatOpenAI(
     model="gpt-4o-mini",
 )
 parser = StrOutputParser()
 
-template_mensagem = ChatPromptTemplate.from_messages(
+message_template = ChatPromptTemplate.from_messages(
     [
         ("system", "Traduza o texto a seguir para {idioma}"),
         ("user", "{texto}"),
     ]
 )
 
-chain = template_mensagem | modelo | parser
+chain = message_template | model | parser
 
 print(chain.invoke({"idioma": "francês", "texto": "Você gosta de tomar café?"}))
